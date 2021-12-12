@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<div class="nav-bar">
+  <div class="text-center">
+
+  <div style="color: honeydew; background-color: black;">McDonalds Ludhiana Punjab&nbsp; &nbsp; Dine-in/Takeaway</div>
+  <br>
+</div>
+</div>
+<div class="text-center">
+  <img src="../assets/McD_.png" height="80" width="80">
+</div><br><br>
+<div class="input-group mb-2 ">
+
+  <input class="form-control mr-sm-2 border-0 shadow-sm p-3 mb-5 bg-white rounded-pill" name="search" type="search"
+    placeholder=" Search for items..." [(ngModel)]="search">
+</div>
+
+
+<div class="card border-0">
+  <div class="card-body">
+    <div *ngFor="let item of items">
+
+      <h2 id="{{item.name}}-section">{{item.name}}</h2>
+      <br>
+      <div class="row-cols-sm-2 row-cols-md-4  ">
+
+        <div *ngFor="let product of products | filter: search" class="col mb-4">
+          <div *ngIf="item.itemId == product.itemId">
+            <ul class="list-group list-group-horizontal">
+              <li class="card h-100">
+
+                <img src={{product.imagePath}} class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3 class="card-title" style="font-size: small; font-weight: 700;"> {{product.name}} </h3>
+                  <p class="card-text"> Price : ₹ {{product.price}} <br> Type : {{product.type}} </p>
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-white btn-sm rounded-pill border border-dark"
+                    (click)="addToCart(product)"
+                      style="font-size: small; font-weight: 600;" type="button">&nbsp;&nbsp;ADD&nbsp;&nbsp;</button>
+                  </div>
+
+                </div>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</div><br>
+
+  <div (click)="openBottomSheet()" class="navbar navbar-expand-lg navbar-light bg-light">
+    <p class="navbar-brand">cart<p>
+  </div>
+
+
+<hr>
